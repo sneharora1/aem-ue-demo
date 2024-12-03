@@ -1,4 +1,4 @@
-import { mergeImagesForArtDirection } from '../../commons/scripts/scripts.js';
+import { mergeImagesForArtDirection } from '../../scripts/scripts.js';
 
 function startCarousel(carousel, imageContainer, totalImages) {
   const intervalTime = 2000; // Time in milliseconds
@@ -45,7 +45,7 @@ export default async function decorate(block) {
   imageContainer.classList.add('image-container');
   const dotsContainer = document.createElement('div');
   dotsContainer.classList.add('dots-container');
-  const images = [...block.children];
+  const images = document.querySelectorAll('.image-carousel > div');
 
   const totalImages = images.length;
   images.forEach((imgDiv, index) => {
@@ -54,12 +54,6 @@ export default async function decorate(block) {
       const imgDesktop = pictureElements[0].querySelector('img');
       const imgMobile = pictureElements[1].querySelector('img');
       mergeImagesForArtDirection(imgDesktop, imgMobile);
-    }
-
-    // eagerly load first 3 images in the carousel
-    if (index < 3) {
-      const imgElements = imgDiv.querySelectorAll('img');
-      imgElements.forEach((img) => img.setAttribute('loading', 'eager'));
     }
 
     imageContainer.appendChild(imgDiv);
@@ -75,7 +69,5 @@ export default async function decorate(block) {
   block.appendChild(imageContainer);
   block.appendChild(dotsContainer);
 
-  if (document.documentElement.className.indexOf('adobe-ue-') < 0) {
-    startCarousel(block, imageContainer, totalImages);
-  }
+  startCarousel(block, imageContainer, totalImages);
 }
