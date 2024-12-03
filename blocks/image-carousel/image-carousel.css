@@ -1,0 +1,57 @@
+.image-carousel {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.image-container {
+    display: flex;
+    width: 100%;
+    transition: all 0.25s ease 0s;
+}
+
+.image-container p {
+    margin-bottom: 0;
+}
+
+.image-container > div {
+    min-width: 100%;
+}
+
+.image-container img {
+    width: 100%;
+    object-fit: cover;
+    height: auto;
+}
+
+.dots-container {
+    display: flex;
+    column-gap: 0.62rem;
+    justify-content: center;
+    margin-top: 0;
+    margin-bottom: 1.56rem;
+}
+
+.dot {
+    background: 0 0;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    width: 3.5rem;
+    height: 0.5rem;
+    background-color: var(--tertiary-medium-grey);
+    border-radius: 0;
+    outline: none;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: var( --tertiary-black);
+}
+
+@media (width >= 1440px) {
+    .dots-container {
+        margin-top: 1.56rem;
+    }
+}
