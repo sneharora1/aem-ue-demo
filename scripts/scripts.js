@@ -12,6 +12,11 @@ import {
   loadCSS,
 } from './aem.js';
 
+const DELIVERY_ASSET_IDENTIFIER = '/adobe/assets/urn:aaid:aem:';
+const DELIVERY_VIDEO_IDENTIFIER = '/play';
+const DELIVERY_IMAGE_IDENTIFIER = '/as/';
+
+
 /**
  * Moves all the attributes from a given elmenet to another given element.
  * @param {Element} from the element to copy attributes from
@@ -29,6 +34,139 @@ export function moveAttributes(from, to, attributes) {
       from.removeAttribute(attr);
     }
   });
+}
+export function mergeImagesForArtDirection(img, imgMobile) {
+  const removeInstrumentation = (of) => {
+    const attributes = [...of.attributes].filter(
+      ({ nodeName }) => nodeName.startsWith('data-aue-') || nodeName.startsWith('data-richtext-'),
+    );
+    if (attributes.length) {
+      // eslint-disable-next-line no-restricted-syntax
+      for (const { nodeName } of attributes) of.removeAttribute(nodeName);
+      // eslint-disable-next-line max-len
+      return attributes.reduce((prev, { nodeName, nodeValue }) => ({ ...prev, [nodeName]: nodeValue }), {});
+    }
+    return null;
+  };
+  const applyDynamicInstrumentation = () => {
+    const dynamicInstrumentation = {};
+    // eslint-disable-next-line no-restricted-syntax
+    for (const entry of [[img, 'min-width: 600px'], [imgMobile]]) {
+      const [element, mediaQuery = ''] = entry;
+      const instrumentation = removeInstrumentation(element);
+      if (!instrumentation) {
+        return;
+      }
+      dynamicInstrumentation[mediaQuery] = instrumentation;
+    }
+    imgMobile.dataset.dynamicInstrumentation = JSON.stringify(dynamicInstrumentation);
+  };
+
+  if (imgMobile) {
+    const pictureMobile = imgMobile.parentElement;
+    // merge the imgMobile into the img:
+    // the sources have min-width media queries for desktop,
+    // we select the one without a media query which is for mobile
+    const pictureMobileMobileSource = pictureMobile.querySelector('source:not([media])');
+    if (pictureMobileMobileSource) {
+      const pcitureMobileSource = img.parentElement.querySelector('source:not([media])');
+      if (pcitureMobileSource) pcitureMobileSource.replaceWith(pictureMobileMobileSource);
+      else img.before(pictureMobileMobileSource);
+    } else {
+      // create a source if there are non (authoring specific case)
+      const source = document.createElement('source');
+      source.srcset = img.src;
+      source.media = '(min-width: 600px)';
+      img.before(source);
+    }
+    // the fallback image should also be the mobile one itself is also mobile so replace it
+    img.replaceWith(imgMobile);
+    // remove picture mobile
+    const p = pictureMobile.parentElement;
+    pictureMobile.remove();
+    if (p.children.length === 0 && !p.textContent.trim()) p.remove();
+    // the instrumentation depends on the viewport size, so we remove it
+    applyDynamicInstrumentation();
+  }
+}
+function createOptimizedPictureWithDeliveryUrls(
+  src,
+  alt = '',
+  eager = false,
+  breakpoints = [{ media: '(min-width: 600px)', width: '2000' }, { width: '750' }],
+) {
+  const url = new URL(src, window.location.href);
+  const width = url.searchParams.get('width');
+  const height = url.searchParams.get('height');
+  const picture = document.createElement('picture');
+  // webp
+  breakpoints.forEach((br) => {
+    const source = document.createElement('source');
+    const webpUrl = new URL(url.href); // Clone original URL
+    webpUrl.searchParams.set('width', br.width);
+    webpUrl.searchParams.set('preferwebp', 'true');
+    if (br.media) source.setAttribute('media', br.media);
+    source.setAttribute('type', 'image/webp');
+    source.setAttribute('srcset', webpUrl.href);
+    if (height) {
+      source.setAttribute('height', height);
+    }
+    if (width) {
+      source.setAttribute('width', width);
+    }
+    picture.appendChild(source);
+  });
+
+  // fallback
+  breakpoints.forEach((br, i) => {
+    const fallbackUrl = new URL(url.href); // Clone original URL
+    fallbackUrl.searchParams.set('width', br.width);
+
+    if (i < breakpoints.length - 1) {
+      const source = document.createElement('source');
+      if (br.media) source.setAttribute('media', br.media);
+      source.setAttribute('srcset', fallbackUrl.href);
+      if (height) {
+        source.setAttribute('height', height);
+      }
+      if (width) {
+        source.setAttribute('width', width);
+      }
+      picture.appendChild(source);
+    } else {
+      const img = document.createElement('img');
+      img.setAttribute('loading', eager ? 'eager' : 'lazy');
+      img.setAttribute('alt', alt);
+      img.setAttribute('src', fallbackUrl.href);
+      if (height) {
+        img.setAttribute('height', height);
+      }
+      if (width) {
+        img.setAttribute('width', width);
+      }
+      picture.appendChild(img);
+    }
+  });
+
+  return picture;
+}
+
+/**
+ * Decorates delivery assets by replacing anchor elements with optimized pictures.
+ * @param {HTMLElement} main - The main element containing the anchor elements.
+ */
+export function decorateDeliveryImages(main) {
+  const anchors = Array.from(main.getElementsByTagName('a'));
+  const deliveryUrls = anchors.filter((anchor) => anchor.href
+    .includes(DELIVERY_ASSET_IDENTIFIER) && anchor.href.includes(DELIVERY_IMAGE_IDENTIFIER));
+  if (deliveryUrls.length > 0) {
+    deliveryUrls.forEach((anchor) => {
+      const deliveryUrl = anchor.href;
+      const altText = anchor.title;
+      const picture = createOptimizedPictureWithDeliveryUrls(deliveryUrl, altText);
+      anchor.replaceWith(picture);
+    });
+  }
 }
 
 /**
@@ -80,6 +218,7 @@ export function decorateMain(main) {
   // hopefully forward compatible button decoration
   decorateButtons(main);
   decorateIcons(main);
+  decorateDeliveryImages(main);
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
