@@ -45,8 +45,7 @@ export default async function decorate(block) {
   imageContainer.classList.add('image-container');
   const dotsContainer = document.createElement('div');
   dotsContainer.classList.add('dots-container');
-  const images = document.querySelectorAll('.image-carousel > div');
-
+  const images = [...block.children];
   const totalImages = images.length;
   images.forEach((imgDiv, index) => {
     const pictureElements = imgDiv.querySelectorAll('picture');
@@ -69,5 +68,7 @@ export default async function decorate(block) {
   block.appendChild(imageContainer);
   block.appendChild(dotsContainer);
 
-  startCarousel(block, imageContainer, totalImages);
+  if (document.documentElement.className.indexOf('adobe-ue-') < 0) {
+    startCarousel(block, imageContainer, totalImages);
+  }
 }
