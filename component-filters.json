@@ -29,13 +29,20 @@
       "cards",
       "columns",
       "quote",
-      "image-carousel"
+      "image-carousel",
+      "image-carousel-native"
     ]
   },
   {
     "id": "image-carousel",
     "components": [
       "image-slide"
+    ]
+  },
+  {
+    "id": "image-carousel-native",
+    "components": [
+      "image-slide-native"
     ]
   },
   {

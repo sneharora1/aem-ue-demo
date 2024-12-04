@@ -185,24 +185,34 @@
         "component": "custom-asset-namespace:custom-asset",
         "configUrl": "https://290622-assetpickerconfig-stage.adobeio-static.net/api/v1/web/assetpicker_config_aio/get-config",
         "valueType": "string",
-        "name": "image_desktop",
-        "label": "Image Desktop",
-        "multi": false,
-        "assetType": "image"
-      },
-      {
-        "component": "custom-asset-namespace:custom-asset",
-        "configUrl": "https://290622-assetpickerconfig-stage.adobeio-static.net/api/v1/web/assetpicker_config_aio/get-config",
-        "valueType": "string",
-        "name": "image_mobile",
-        "label": "Image (mobile)",
+        "name": "image",
+        "label": "Image",
         "multi": false,
         "assetType": "image"
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "image_mobileTitle",
+        "name": "image_Title",
+        "value": "Default alt",
+        "label": "Alt Text"
+      }
+    ]
+  },
+  {
+    "id": "image-slide-native",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "image_Title",
         "value": "Default alt",
         "label": "Alt Text"
       }

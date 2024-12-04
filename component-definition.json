@@ -151,6 +151,21 @@
           }
         },
         {
+          "title": "Image Carousel-Native",
+          "id": "image-carousel-native",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Image Carousel Native",
+                  "filter": "image-carousel-native"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Image Slide",
           "id": "image-slide",
           "plugins": {
@@ -160,6 +175,24 @@
                 "template": {
                   "name": "Image Slide",
                   "model": "image-slide",
+                  "image_desktop": "",
+                  "image_mobile": "",
+                  "image_mobileAlt": ""
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Image Slide native",
+          "id": "image-slide-native",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/image/v1/image",
+                "template": {
+                  "name": "Image Slide Native",
+                  "model": "image-slide-native",
                   "image_desktop": "",
                   "image_mobile": "",
                   "image_mobileAlt": ""
