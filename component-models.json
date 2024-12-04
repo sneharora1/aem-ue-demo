@@ -202,22 +202,29 @@
   {
     "id": "image-slide-native",
     "fields": [
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Image",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "image_Title",
-        "value": "Default alt",
-        "label": "Alt Text"
-      }
+        {
+            "component": "reference",
+            "valueType": "string",
+            "name": "image_desktop",
+            "label": "Image Desktop",
+            "multi": false
+        },
+        {
+            "component": "reference",
+            "valueType": "string",
+            "name": "image_mobile",
+            "label": "Image (mobile)",
+            "multi": false
+        },
+        {
+            "component": "text",
+            "valueType": "string",
+            "name": "image_mobileAlt",
+            "value": "Default alt",
+            "label": "Alt Text"
+        }
     ]
-  },
+},
   {
     "id": "hero",
     "fields": [
