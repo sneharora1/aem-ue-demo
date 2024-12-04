@@ -183,7 +183,7 @@
     "fields": [
       {
         "component": "custom-asset-namespace:custom-asset",
-        "configUrl": "https://290622-assetpickerconfig-stage.adobeio-static.net/api/v1/web/assetpicker_config_aio/get-config",
+        "configUrl": "https://290622-assetpickerconfig.adobeio-static.net/api/v1/web/assetpicker_config_aio/get-config",
         "valueType": "string",
         "name": "image_desktop",
             "label": "Image Desktop",
