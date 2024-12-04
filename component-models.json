@@ -183,7 +183,7 @@
     "fields": [
       {
         "component": "custom-asset-namespace:custom-asset",
-        "configUrl": "https://raw.githubusercontent.com/sneharora1/aem-ue-demo/refs/heads/main/tools/assetselector/config.json",
+        "configUrl": "https://290622-assetpickerconfig-stage.adobeio-static.net/api/v1/web/assetpicker_config_aio/get-config",
         "valueType": "string",
         "name": "image_desktop",
             "label": "Image Desktop",
