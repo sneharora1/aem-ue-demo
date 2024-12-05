@@ -105,6 +105,7 @@ function createOptimizedPictureWithDeliveryUrls(
     const webpUrl = new URL(url.href); // Clone original URL
     webpUrl.searchParams.set('width', br.width);
     webpUrl.searchParams.set('id', '1');
+     webpUrl.searchParams.set('quality', '65');
     if (br.media) source.setAttribute('media', br.media);
     source.setAttribute('srcset', webpUrl.href);
     if (height) {
