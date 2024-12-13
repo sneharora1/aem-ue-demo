@@ -32,14 +32,17 @@
       "element": "taggroup",
       "name": "property=xcm:keywords.id=",
       "options": [{
-        "label": "Arena",
-        "value": "arena"
+        "label": "Demo",
+        "value": "demo"
       }]
     }],
     "groupKey": "AssetTagsGroup",
     "header": "Assets Tags"
   }],
-  "repoNames": ["author-p130360-e1403848.adobeaemcloud.com"],
-  "repositories": ["delivery-p130360-e1403848.adobeaemcloud.com"],
-  "rootPath": "/content/dam"
+  "repoNames": ["author-p66302-e574366.adobeaemcloud.com"],
+  "repositories": ["delivery-p66302-e574366.adobeaemcloud.com"],
+  "rootPath": "/content/dam",
+  "expiryOptions": {
+        "allowSelectionAndDrag": false
+    }
 }
