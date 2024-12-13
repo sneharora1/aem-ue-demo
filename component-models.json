@@ -183,7 +183,7 @@
     "fields": [
       {
         "component": "custom-asset-namespace:custom-asset",
-        "configUrl": "https://290622-assetpickerconfig.adobeio-static.net/api/v1/web/assetpicker_config_aio/get-config",
+        "configUrl": "https://raw.githubusercontent.com/buuhuu/maruti-playground/dmassetpickerVideo/tools/assets-selector/image.config.json",
         "valueType": "string",
         "name": "image_desktop",
             "label": "Image Desktop",
