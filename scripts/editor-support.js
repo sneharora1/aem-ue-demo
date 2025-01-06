@@ -9,7 +9,7 @@ import {
 } from './aem.js';
 import { decorateRichtext } from './editor-support-rte.js';
 import {
-  decorateMain, buildAutoBlocks, decorateDeliveryImages, decorateDeliveryVideos,
+  decorateMain, buildAutoBlocks, decorateDeliveryImages,
 } from './scripts.js';
 
 async function applyChanges(event) {
