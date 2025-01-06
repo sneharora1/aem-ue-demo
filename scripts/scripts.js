@@ -200,7 +200,7 @@ async function loadFonts() {
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
-function buildAutoBlocks() {
+export function buildAutoBlocks() {
   try {
     // TODO: add auto block, if needed
   } catch (error) {
