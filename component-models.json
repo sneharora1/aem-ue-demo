@@ -1,4 +1,4 @@
-  [
+[
   {
     "id": "title",
     "fields": [
@@ -183,18 +183,13 @@
     "fields": [
       {
         "component": "custom-asset-namespace:custom-asset",
-        "configUrl": "https://raw.githubusercontent.com/buuhuu/maruti-playground/dmassetpickerVideo/tools/assets-selector/videos.config.json",
+        "configUrl": "/content/dam/sneh-demo/videos.config.json",
         "valueType": "string",
         "required" :true,
         "name": "image_desktop",
             "label": "Image Desktop",
         "multi": false,
         "assetType": "image"
-      },
-      {
-        "component": "custom-asset-namespace:custom-asset-mimetype",
-        "valueType": "string",
-        "name": "image_desktopMimeType"
       },
       {
         "component": "text",
