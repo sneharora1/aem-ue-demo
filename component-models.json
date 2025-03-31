@@ -185,11 +185,9 @@
         "component": "custom-asset-namespace:custom-asset",
         "configUrl": "/content/dam/sneh-demo/image.config.json",
         "valueType": "string",
-        "required" :true,
         "name": "image_desktop",
             "label": "Image Desktop",
-        "multi": false,
-        "assetType": "image"
+        "multi": false
       },
       {
         "component": "text",
