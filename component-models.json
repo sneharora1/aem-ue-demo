@@ -245,17 +245,39 @@
   "id": "custom-asset-two",
   "fields": [
     {
-      "component": "custom-asset-namespace:custom-asset",
-      "name": "video",
-      "label": "Video",
-      "configUrl": "/content/dam/sneh-demo/image.config.json",
-      "valueType": "string"
-    },
-    {
-      "component": "custom-asset-namespace:custom-asset-mimetype",
-      "valueType": "string",
-      "name": "videoMimeType"
-    }
+                "component": "custom-asset-namespace:custom-asset",
+                "name": "video_link",
+                "label": "Video",
+                "configUrl": "https://290622-assetpickerconfig.adobeio-static.net/api/v1/web/assetpicker_config_aio/get-config",
+                "valueType": "string",
+                "assetType":"video"
+              },
+              {
+                "component": "custom-asset-namespace:custom-video-poster",
+                "name": "video_poster",
+                "valueType": "string"
+              },
+              {
+                "component": "multiselect",
+                "valueType": "string",
+                "name": "video_linkTitle",
+                "value": "",
+                "label": "Options",
+                "options": [
+                  {
+                    "name": "Hero",
+                    "value": "hero"
+                  },
+                  {
+                    "name": "Inline",
+                    "value": "inline"
+                  },
+                  {
+                    "name": "Autoplay",
+                    "value": "autoplay"
+                  }
+                ]
+              }
   ]
 },
   {
