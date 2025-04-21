@@ -217,6 +217,47 @@
         }
     ]
 },
+{
+  "id": "custom-asset-one",
+  "fields": [
+    {
+      "component": "custom-asset-namespace:custom-asset",
+      "name": "image",
+      "label": "Image",
+      "configUrl": "/content/dam/sneh-demo/image.config.json",
+      "valueType": "string",
+      "myValue": "myValue1"
+    },
+    {
+      "component": "custom-asset-namespace:custom-asset-mimetype",
+      "valueType": "string",
+      "name": "imageMimeType"
+    },
+    {
+      "component": "text",
+      "name": "imageAlt",
+      "label": "Alt Text",
+      "valueType": "string"
+    }
+  ]
+},
+{
+  "id": "custom-asset-two",
+  "fields": [
+    {
+      "component": "custom-asset-namespace:custom-asset",
+      "name": "video",
+      "label": "Video",
+      "configUrl": "/content/dam/sneh-demo/image.config.json",
+      "valueType": "string"
+    },
+    {
+      "component": "custom-asset-namespace:custom-asset-mimetype",
+      "valueType": "string",
+      "name": "videoMimeType"
+    }
+  ]
+},
   {
     "id": "hero",
     "fields": [

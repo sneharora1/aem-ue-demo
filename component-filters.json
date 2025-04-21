@@ -30,7 +30,9 @@
       "columns",
       "quote",
       "image-carousel",
-      "image-carousel-native"
+      "image-carousel-native",
+      "custom-asset-one",
+      "custom-asset-two"
     ]
   },
   {
