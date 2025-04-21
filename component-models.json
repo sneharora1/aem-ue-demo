@@ -248,7 +248,7 @@
                 "component": "custom-asset-namespace:custom-asset",
                 "name": "video_link",
                 "label": "Video",
-                "configUrl": "https://290622-assetpickerconfig.adobeio-static.net/api/v1/web/assetpicker_config_aio/get-config",
+                "configUrl": "/content/dam/sneh-demo/image.config.json",
                 "valueType": "string",
                 "assetType":"video"
               },
