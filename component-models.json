@@ -224,9 +224,9 @@
       "component": "custom-asset-namespace:custom-asset",
       "name": "image",
       "label": "Image",
+      "required" : "true",
       "configUrl": "/content/dam/sneh-demo/image.config.json",
-      "valueType": "string",
-      "myValue": "myValue1"
+      "valueType": "string"
     },
     {
       "component": "custom-asset-namespace:custom-asset-mimetype",
