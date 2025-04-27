@@ -183,7 +183,7 @@
     "fields": [
       {
         "component": "custom-asset-namespace:custom-asset",
-        "configUrl": "/content/dam/sneh-demo/image.config.json",
+        "configUrl": "https://raw.githubusercontent.com/buuhuu/maruti-playground/dmassetpickerVideo/tools/assets-selector/videos.config.json",
         "valueType": "string",
         "name": "image_desktop",
             "label": "Image Desktop",
@@ -248,7 +248,7 @@
                 "component": "custom-asset-namespace:custom-asset",
                 "name": "video_link",
                 "label": "Video",
-                "configUrl": "/content/dam/sneh-demo/image.config.json",
+                "configUrl": "https://raw.githubusercontent.com/buuhuu/maruti-playground/dmassetpickerVideo/tools/assets-selector/videos.config.json",
                 "valueType": "string",
                 "assetType":"video"
               },
